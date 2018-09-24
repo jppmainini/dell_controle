@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -20,5 +20,13 @@ class RegisterView(LoginRequiredMixin,CreateView):
         context['pgusuarios'] = 'active'
         return context
 
+
+
+
+
+class CadUsuarios(LoginRequiredMixin, ListView):
+    template_name = 'accounts/lista_usuarios.html'
+
+    pass
 
 vwRegister = RegisterView.as_view()
